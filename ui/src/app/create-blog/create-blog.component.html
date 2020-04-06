@@ -1,0 +1,15 @@
+<div class="px-3 py-3">
+    <div class="row">
+        <h4 class="col-lg-6">Create Blog</h4>
+    </div>
+    <form class="mt-4">
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" name="title" class="form-control" [(ngModel)]="blog.title"  style="width: 350px"/>
+        </div>
+        <div>
+            <button class="btn btn-primary" (click)="createBlog()">Create</button>
+        </div>
+    </form>
+</div>
+
