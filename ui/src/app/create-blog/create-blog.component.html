@@ -6,6 +6,7 @@
         <div class="form-group">
             <label>Title</label>
             <input type="text" name="title" class="form-control" [(ngModel)]="blog.title"  style="width: 350px"/>
+            <div *ngIf="blog.titleError" class="text-danger">Invalid Title</div>
         </div>
         <div>
             <button class="btn btn-primary" (click)="createBlog()">Create</button>

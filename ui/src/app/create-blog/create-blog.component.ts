@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {Blog} from '../model/blog';
+import {BlogService} from '../blog.service';
 
 @Component({
   selector: 'app-create-blog',
@@ -10,7 +11,7 @@ import {Blog} from '../model/blog';
 export class CreateBlogComponent implements OnInit {
 
   public blog;
-  constructor(private router: Router) {
+  constructor(private router: Router, private blogService: BlogService) {
     this.blog = new Blog();
   }
 
@@ -22,8 +23,13 @@ export class CreateBlogComponent implements OnInit {
   }
 
   createBlog(): void{
-    alert(this.blog.title);
-    this.goToBlogs();
+    if (this.blog.validate()){
+      this.blog.titleError = false;
+      this.blogService.createBlog(this.blog);
+      this.goToBlogs();
+    }else{
+      this.blog.titleError = true;
+    }
   }
 
 }
